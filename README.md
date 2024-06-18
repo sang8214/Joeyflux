@@ -2,7 +2,7 @@
 게임 내 UI요소 관리 및 트랜지션 구현 
 
 ## 🚩프로젝트 목적 및 내용
-1. 코드 샘플용 포트폴리오
+1. 코드 샘플용 프로젝트
 2. Window/Popup/Component 요소로 UI를 구분하고, 해당 단위의 템플릿을 시스템에 쉽게 연동할 수 있도록 구현
 3. 게임 완성본이 아닌, 게임내 존재하는 UI요소들을 어떻게 관리하는지에 초점을 맞춤
 4. 향후 프로토타입을 기준으로 게임 특성에 맞는 요소로 커스터 마이징 가능하도록 설계
@@ -23,9 +23,9 @@
 
 ## 관리 클래스 정의
 1. UINavigator
-   - 순차적인 노출/숨김(or 반환)을 위한 Window/Popup용 Stack 관리
+   - Window/Popup용 Stack 관리(Stack방식의 활성/비활성 동작)
    - Back/Home 버튼에 대한 이벤트를 처리
-   - UIManager에 해당 요소에 대한 노출/숨김을 처리하도록 요청, 이후 Stack 조작
+   - UIManager에 타겟 인스턴스를 요청, 전달받은 인스턴스를 활성/비활성화 및 Stack 조작
 2. UIMananger
    - Window/Popup/Component 로드 및 반환 처리
    - Window로드의 경우, BundleManager로 Addressable Asset System을 이용하여 로드
