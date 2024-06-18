@@ -16,6 +16,9 @@
 ## 😎프로젝트 담당자
 1. 오상현(JoeyFlux) : 클라이언트 프로그래머
 
+## 🔑프로젝트 실행방법
+1. 프로젝트 Open 후 LobbyScene 실행
+
 ## UI요소 및 규약
 1. Window(UIWindow) : UI 메인 레이아웃으로 동일한 여러개의 Window는 노출 불가
 2. Popup(UIPopup) : Window 레이어 보다 위에 상주하며, 동일한 여러개의 Popup은 Stack형식으로 노출 가능
