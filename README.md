@@ -10,8 +10,8 @@
 ## 🍳프로젝트 개발 환경
 1. Engine : Unity 2023.2
 2. IDE : JetBrain Rider 
-3. Package Assets : UGUI, Addressable Assets, URP(Optional), TextMeshPro(Optional)
-4. UI Resource : AssetStore Free Asset
+3. Package Assets : UGUI, Addressable Assets, URP, TextMeshPro
+4. UI Texture Resources : AssetStore Free Asset
 
 ## 😎프로젝트 담당자
 1. 오상현(JoeyFlux) : 클라이언트 프로그래머
