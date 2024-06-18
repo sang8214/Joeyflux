@@ -1,38 +1,58 @@
-using System.Collections;
 using System.Collections.Generic;
 using Flux.UI.Popup;
+using Flux.UI.Component;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Flux.UI.Window
 {
     public class UICharacterWindow : UIWindow
     {
-        [SerializeField] private Text characterNameText;
+        [SerializeField] private Transform characterListRoot;
+        private List<UICharacterComponent> _listCharacterComponent = new();
         
-        public void ShowLayout(string characterName)
+        public void ShowLayout()
         {
-            characterNameText.text = characterName;
             Debug.Log($"{this.GetType().Name} : ShowLayout");
             OnRefresh();
         }
         
-        public void OnTouchLevelUp()
+        private void OnEventSelectCharacter(int id)
         {
-            if (UINavigator.Instance.TryOpenPopup<UILevelUpPopup>(out var uiLevelUpPopup))
-                uiLevelUpPopup.ShowLayout();
+            if (UINavigator.Instance.TryOpenPopup<UICharacterPopup>(out var uiCharacterPopup))
+                uiCharacterPopup.ShowLayout(id);
         }
 
         #region override
         public override void OnRefresh()
         {
-            // Todo : Do Something
             Debug.Log($"{this.GetType().Name} : OnRefresh");
+            
+            // Todo : Do Something
+            UIManager.Instance.onEventChangeWindow?.Invoke(windowType);
+            
+            for (int i = 0; i < 3; i++)
+            {
+                if (!UIManager.Instance.TryGetUIComponent<UICharacterComponent>(characterListRoot, out var uiComponent))
+                    continue;
+
+                uiComponent.onEventSelectCharacter = OnEventSelectCharacter;
+                uiComponent.gameObject.SetActive(true);
+                uiComponent.ShowLayout(i+1);
+                
+                _listCharacterComponent.Add(uiComponent);
+            }
         }
         public override void OnClose()
         {
-            // Todo : Do Something
             Debug.Log($"{this.GetType().Name} : OnClose");
+
+            // Todo : Do Something
+            foreach (var characterComponent in _listCharacterComponent)
+            {
+                UIManager.Instance.ReturnUIComponent(characterComponent);    
+            }
+
+            _listCharacterComponent.Clear();
         }
         #endregion                
     }

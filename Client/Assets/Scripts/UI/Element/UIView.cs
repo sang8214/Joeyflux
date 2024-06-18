@@ -13,7 +13,7 @@ namespace Flux.UI
         }
 
         // 첫 UI 오브젝트 생성시 호출됨
-        public virtual void OnCreate()
+        void OnCreate()
         {
             if (_initialized)
                 return;

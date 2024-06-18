@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace Flux.UI
 {
     public class UIPopup : UIView
     {
+        public bool isTop = false;
     }
 }

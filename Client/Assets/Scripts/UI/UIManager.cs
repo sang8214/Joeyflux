@@ -5,13 +5,26 @@ using Flux.Bundle;
 
 namespace Flux.UI
 {
+    public enum eWINDOW_TYPE
+    {
+        None,
+        Lobby,
+        Inventory,
+        Character,
+        Max
+    }
+    
     public class UIManager : MonoSingleton<UIManager>
     {
         private Dictionary<string, UIWindow> _mapWindowObject = new Dictionary<string, UIWindow>();
         private readonly string UI_PREFIX = "UI/";
 
         public Transform windowTrans;
+        public Transform topWindowTrans;
         public Transform popupTrans;
+        public Transform topPopupTrans;
+
+        public System.Action<eWINDOW_TYPE> onEventChangeWindow = null;
 
         private string GetKey(string typeName)
         {
@@ -41,18 +54,19 @@ namespace Flux.UI
             var obj = Instantiate(bundle);
             obj.SetActive(false);
 
-            if (!obj.TryGetComponent<T>(out var component)) 
+            if (!obj.TryGetComponent<T>(out var window)) 
                 return false;
-            
-            component.transform.SetParent(windowTrans, false);
-            _mapWindowObject.Add(typeName, component);
-            uiWindow = component;
+
+            window.transform.SetParent(window.isTop ? topWindowTrans : windowTrans, false);
+
+            _mapWindowObject.Add(typeName, window);
+            uiWindow = window;
             
             return true;
         }
         
         // UI Popup을 가져오는 함수
-        public bool TryGetUIPopup<T>(out T uiPopup, bool isForceBlurParent = false) where T : UIPopup
+        public bool TryGetUIPopup<T>(out T uiPopup) where T : UIPopup
         {
             var typeName = typeof(T).Name;
             var addressName = GetKey(typeName);
@@ -60,7 +74,7 @@ namespace Flux.UI
             uiPopup = null;
             var obj = ObjectPoolManager.Instance.GetObjectSync(addressName);
 
-            if (obj == null)
+            if (!obj)
                 return false;
 
             obj.SetActive(false);
@@ -68,52 +82,59 @@ namespace Flux.UI
             if (!obj.TryGetComponent<T>(out var popup))
                 return false;
             
-            popup.transform.SetParent(popupTrans, false);
+            popup.transform.SetParent(popup.isTop ? topPopupTrans : popupTrans, false);
+
             uiPopup = popup;
                
             return true;
         }
         
         // UI Component 가져오는 함수
-        public T GetUIComponent<T>(Transform root)
+        public bool TryGetUIComponent<T>(Transform root, out T uiComponent) where T : UIComponent
         {
+            uiComponent = null;
+            
             if (root is null)
-                return default(T);
+                return false;
 
             var typeName = typeof(T).Name;
             var addressName = GetKey(typeName);
             var obj = ObjectPoolManager.Instance.GetObjectSync(addressName);
 
-            if (obj is null)
-                return default(T);
+            if (!obj)
+                return false;
 
-            obj.transform.SetParent(root.transform, false);
+            obj.transform.SetParent(root, false);
+            
+            if (!obj.TryGetComponent<T>(out var component))
+                return false;
 
-            return !obj.TryGetComponent<T>(out var component) ? default(T) : component;
+            uiComponent = component;
+            return true;
         }
         
         // UI Popup을 ObjectPool에 반환하는 함수
-        public void ReturnUIPopup<T>(T popup) where T : UIPopup
+        public void ReturnUIPopup(UIPopup uiPopup)
         {
-            if (!popup)
+            if (!uiPopup)
                 return;
         
-            var typeName = typeof(T).Name;
+            var typeName = uiPopup.GetType().Name;
             var addressName = GetKey(typeName);
 
-            ObjectPoolManager.Instance.ReturnObject(addressName, popup.gameObject);
+            ObjectPoolManager.Instance.ReturnObject(addressName, uiPopup.gameObject);
         }
         
         // UI Component를 ObjectPool에 반환하는 함수
-        public void ReturnUIComponent<T>(GameObject obj)
+        public void ReturnUIComponent(UIComponent uiComponent)
         {
-            if (!obj)
+            if (!uiComponent)
                 return;
 
-            var typeName = typeof(T).Name;
+            var typeName = uiComponent.GetType().Name;
             var addressName = GetKey(typeName);
 
-            ObjectPoolManager.Instance.ReturnObject(addressName, obj);
+            ObjectPoolManager.Instance.ReturnObject(addressName, uiComponent.gameObject);
         }
     }
 }

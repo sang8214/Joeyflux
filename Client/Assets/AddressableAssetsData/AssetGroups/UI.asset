@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UI
+  m_EditorClassIdentifier: 
+  m_GroupName: UI
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 4944577c2a4142b44a3cb0132521462a
+  m_SerializeEntries:
+  - m_GUID: 84110fce9cccd1244b4a7162effdaf82
+    m_Address: UI/UICharacterComponent
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd75fb933c48c4b47b99734ed24d8c1b
+    m_Address: UI/UICharacterPopup
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da13aa3ba1a1ed24db9882e6f0f7b68b
+    m_Address: UI/UICharacterStatusPopup
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b4fb8f63a8542a5458de301a3dca6a9e
+    m_Address: UI/UICharacterWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2ec420cacb965944b9e4ebd25c809e89
+    m_Address: UI/UIInventoryWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f1afae57e8139d9408a0dca6ed6272a2
+    m_Address: UI/UILobbyTopWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee92b1e1354c79040b8210ce1921af3b
+    m_Address: UI/UILobbyWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 3a729094e8250e44bb72b57d9906b994, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 99bb5ae3b6532f54e91ed091f40d9847, type: 2}
+    - {fileID: 11400000, guid: 59c1460eb5f1a8b4cb359ff24723e0a7, type: 2}

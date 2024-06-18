@@ -101,8 +101,8 @@ public class ObjectPool
             return;
         
         poolObject.SetActive(false);
-        poolObject.transform.position = _originPosition;
-        poolObject.transform.rotation = _originRotation;
+        poolObject.transform.localPosition = _originPosition;
+        poolObject.transform.localRotation = _originRotation;
         poolObject.transform.localScale = _originScale;
         poolObject.transform.SetParent(_poolTransform, false);
         
