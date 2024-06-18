@@ -37,7 +37,7 @@
    - Async Load : 3D 모델이나, Scene 트랜지션간 리소스 로딩 용도로 사용, 이 프로젝트에서는 사용되고 있지 않지만, 구현은 해둠
    - Async의 경우, Load Complete에 대한 콜백을 캐싱하며, BundleLoadScheduler를 통해 로딩 대기 및 중복 방지 관리
 4. ObjectPoolManager
-   - Popup/Component의 경우, 동일한 Instance가 여러개 생성될 수 있으므로, 잦은 리소스 로딩이 아닌 재활용을 위해 사용
+   - Popup/Component의 경우, 동일한 Instance가 여러개 생성될 수 있어, 재활용을 위한 클래스
    - 사용되지 않는 Pool Object가 있을 경우 반환
    - 없을 경우 캐싱된 오브젝트를 복제하여 반환
    - 캐싱된 오브젝트가 없을 경우, BundleManager를 통해 해당 리소스 로딩 후 오브젝트 캐싱
@@ -45,13 +45,13 @@
 ## 더미 클래스 정의
 1. UI System 시뮬레이션을 위한 더미용 Window/Popup/Component
 1. Window
-   - UILobbyTopWindow : 상단에 떠 있는 Window 이름, Back/Home 버튼, 옵션 버튼을 관리하며, 현재 Window상태에 따라 노출여부 판단
+   - UILobbyTopWindow : Stack의 영향을 받지 않으며, Window 이름, Back/Home/Option 버튼 관리,
    - UILobbyWindow : LobbyScene 첫 실행시 바로 노출되는 창, InventoryWindow로 이동할 수 있는 버튼 존재
    - UIInventoryWindow : 인벤토리 더미 창, CharacterWindow로 이동할 수 있는 버튼 존재
    - UICharacterWindow : 3개의 UICharacterComponent가 존재하며, Component 선택시 UICharacterPopup 노출
 2. Popup
-   - UICharacterPopup : 캐릭터에 대한 정보를 노출, Status버튼 누를 시 UICharacterStatusPopup 노출, X버튼 존재
-   - UICharacterStatusPopup : 캐릭터의 스테이터스 정보를 노출, X버튼 존재
+   - UICharacterPopup : 캐릭터 정보 노출, Status버튼 누를 시 UICharacterStatusPopup 노출, X버튼 존재
+   - UICharacterStatusPopup : 캐릭터 스테이터스 정보 노출, X버튼 존재
 3. Component
    - UICharacterComponent : UICharacterWindow와 UICharacterPopup에서 사용되고 있는 Component
      
