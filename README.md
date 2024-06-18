@@ -35,7 +35,7 @@
    - Addressable Asset System을 통한 Load/UnLoad를 진행
    - Sync Load : UI및 Effect 로드 방식, 바로 로드되는 방식으로 이 프로젝트에서 사용되고 있음
    - Async Load : 3D 모델이나, Scene 트랜지션간 리소스 로딩 용도로 사용, 이 프로젝트에서는 사용되고 있지 않지만, 구현은 해둠
-     (Async 방식이기 때문에 Load Complete에 대한 콜백을 캐싱하며, BundleLoadScheduler를 통해 로딩 대기 및 중복 방지 관리)
+   - Async의 경우, Load Complete에 대한 콜백을 캐싱하며, BundleLoadScheduler를 통해 로딩 대기 및 중복 방지 관리
 4. ObjectPoolManager
    - Popup/Component의 경우, 동일한 Instance가 여러개 생성될 수 있으므로, 잦은 리소스 로딩이 아닌 재활용을 위해 사용
    - 사용되지 않는 Pool Object가 있을 경우 반환
