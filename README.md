@@ -65,5 +65,8 @@
 ```
      
 ## 플로우 다이어 그램
-
-
+1. Window Open(Enable) Flow
+   ![WindowOpenFlow](https://github.com/sang8214/UIManagement/assets/41162215/53289e4d-4717-4d4c-b4db-f500a9a83110)
+   
+2. Popup/Component Open(Enable) Flow
+   ![PopupOpenFlow](https://github.com/sang8214/UIManagement/assets/41162215/a216df4b-658a-4968-9c6d-99b169cad571)
