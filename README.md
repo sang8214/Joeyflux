@@ -20,11 +20,14 @@
 1. 프로젝트 Open 후 LobbyScene 실행
 
 ## UI요소 및 규약
+```
 1. Window(UIWindow) : UI 메인 레이아웃으로 동일한 여러개의 Window는 노출 불가
 2. Popup(UIPopup) : Window 레이어 보다 위에 상주하며, 동일한 여러개의 Popup은 Stack형식으로 노출 가능
 3. Component(UIComponent) : Window/Popup 내부의 구성요소가 될 수 있으며, 동일한 여러개의 Component가 어떠한 형태로든 노출 가능
+```
 
 ## 관리 클래스 정의
+```
 1. UINavigator
    - Window/Popup용 Stack 관리(Stack방식의 활성/비활성 동작)
    - Back/Home 버튼에 대한 이벤트를 처리
@@ -44,8 +47,10 @@
    - 사용되지 않는 Pool Object가 있을 경우 반환
    - 없을 경우 캐싱된 오브젝트를 복제하여 반환
    - 캐싱된 오브젝트가 없을 경우, BundleManager를 통해 해당 리소스 로딩 후 오브젝트 캐싱
+```
 
 ## 더미 클래스 정의
+```
 1. UI System 시뮬레이션을 위한 더미용 Window/Popup/Component
 1. Window
    - UILobbyTopWindow : Stack의 영향을 받지 않으며, Window 이름, Back/Home/Option 버튼 관리,
@@ -57,6 +62,7 @@
    - UICharacterStatusPopup : 캐릭터 스테이터스 정보 노출, X버튼 존재
 3. Component
    - UICharacterComponent : UICharacterWindow와 UICharacterPopup에서 사용되고 있는 Component
+```
      
 ## 플로우 다이어 그램
 
